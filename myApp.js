@@ -4,7 +4,7 @@ let app = express();
 /* Note to Professor: The FCC repo did not have
 any comments on it when I cloned. I'm going to
 implement the one's I've found on your Google
-Sheets example for organizations sake, though. */
+Docs example for organizations sake, though. */
 
 // --> 7) Mount the Logger middleware here
 
