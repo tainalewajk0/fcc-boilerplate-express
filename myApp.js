@@ -17,12 +17,14 @@ Docs example for organizations sake, though. */
 console.log("Hello World");
 
 /** 2) A first working Express server. */
-app.get("/", function(req, res) {
-    res.send("Hello Express");
-});
+//app.get("/", function(req, res) {
+//    res.send("Hello Express");
+//});
 
 /** 3) Serve an HTML file */
-
+app.get("/", function(req, res) {
+    res.sendFile(__dirname + "/public/index.html");
+});
 
 /** 4) Serve static assets */
 
