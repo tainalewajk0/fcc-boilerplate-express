@@ -48,11 +48,11 @@ app.get("/json",
     })
 );*/
 require('dotenv').config();
-const message = "Hello json";
-const responseMessage = process.env.MESSAGE_STYLE === 
-        "uppercase" ? message.toUpperCase() : message;
 
 app.get("/json", (req, res) => {
+    const message = "Hello json";
+    const responseMessage = process.env.MESSAGE_STYLE ===  
+        "uppercase" ? message.toUpperCase() : message;
   res.json({ "message": responseMessage });
 });
 
