@@ -32,9 +32,21 @@ app.get("/", function(req, res) {
 app.use("/public", express.static(__dirname + "/public"));
 
 /** 5) Serve JSON on a specific route */
-
+//app.get("/json", (req, res) =>{
+//    res.json({
+//        message: "Hello json"
+//    });
+//});
 
 /** 6) Use the .env file to configure the app */
+const message = "HELLO JSON"
+app.get("/json",
+    (req, res) => res.json(
+        {"message":
+        process.env.MESSAGE_STYLE === 
+        "uppercase" ? message.toUpperCase() : message
+    })
+);
 
 
 /** 7) Root-level Middleware - A logger */
