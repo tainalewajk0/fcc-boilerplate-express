@@ -39,12 +39,21 @@ app.use("/public", express.static(__dirname + "/public"));
 //});
 
 /** 6) Use the .env file to configure the app */
-const message = "HELLO JSON"
-app.get("/json",
-    (req, res) => res.json(
-        {"message": process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message
-    })
-);
+//const message = "HELLO JSON"
+//app.get("/json",
+//    (req, res) => res.json(
+//        {"message": process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message
+//    })
+//);
+require('dotenv').config();
+
+app.get("/json", (req, res) => {
+  const message = "Hello json"; // Default message in lowercase
+  const responseMessage = process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message;
+  res.json({ "message": responseMessage });
+});
+
+
 
 
 /** 7) Root-level Middleware - A logger */
