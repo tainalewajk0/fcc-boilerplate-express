@@ -1,6 +1,7 @@
 let express = require('express');
 const res = require('express/lib/response');
 let app = express();
+require('dotenv').config();
 
 /* Note to Professor: The FCC repo did not have
 any comments on it when I cloned. I'm going to
@@ -47,13 +48,14 @@ app.get("/json",
         {"message": process.env.MESSAGE_STYLE === "uppercase" ? message.toUpperCase() : message
     })
 );*/
-require('dotenv').config();
+
 
 app.get("/json", (req, res) => {
-    const message = "Hello json";
-    const responseMessage = process.env.MESSAGE_STYLE ===  
-        "uppercase" ? message.toUpperCase() : message;
-  res.json({ "message": responseMessage });
+    if (process.env["MESSAGE_STYLE"] == "uppercase") {
+        res.json({"message": "HELLO JSON"})
+    } else {
+        res.json({"message": "Hello json"})
+    }
 });
 
 
