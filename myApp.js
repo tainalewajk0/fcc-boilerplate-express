@@ -3,13 +3,14 @@ const res = require('express/lib/response');
 let app = express();
 require('dotenv').config();
 
-/* Note to Professor: The FCC repo did not have
-any comments on it when I cloned. I'm going to
-implement the one's I've found on your Google
-Docs example for organizations sake, though. */
 
 // --> 7) Mount the Logger middleware here
-
+app.use(function middleware (req, res, next) {
+    var str = req.method + " " + req.path
+            + " - " + req.ip;
+    console.log(str);
+    next();
+})
 
 // --> 11) Mount the body-parser middleware here
 
@@ -56,13 +57,28 @@ app.get("/json", (req, res) => {
 
 
 /** 8) Chaining middleware. A Time server */
-
+app.get('/now', function (req, res, next){
+    req.time = new Date().toString();
+    next();
+}, function (req, res) {
+    res.send({time: req.time});
+});
 
 /** 9) Get input from client - Route parameters */
-
+app.get("/:word/echo", (req, res) => {
+    const {word} = req.params;
+    res.json({echo: word});
+});
 
 /** 10) Get input from client ... */
+app.get("/name", function(req, res){
+    var fName = req.query.first;
+    var lName = req.query.last;
 
+    res.json({
+        name: `${fName} ${lName}`
+    });
+});
 
 
 
