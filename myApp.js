@@ -49,9 +49,6 @@ app.get("/json", (req, res) => {
     }
 });
 
-
-
-
 /** 7) Root-level Middleware - A logger */
 // Place it before all the routes!
 
