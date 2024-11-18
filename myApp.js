@@ -77,6 +77,12 @@ app.get("/name", function(req, res){
     });
 });
 
+/* 12) Get Data from POST Requests */
+app.post("/name", function(req, res){
+    var namestr = req.body.first + " "
+                + req.body.last;
+    res.json({name: namestr});
+});
 
 
 
