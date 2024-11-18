@@ -1,6 +1,7 @@
 let express = require('express');
 const res = require('express/lib/response');
 let app = express();
+var bodyParser = require("body-parser");
 require('dotenv').config();
 
 
@@ -13,7 +14,8 @@ app.use(function middleware (req, res, next) {
 })
 
 // --> 11) Mount the body-parser middleware here
-
+app.use(bodyParser.urlencoded({extended: false}));
+app.use((bodyParser.json()));
 
 /** 1) Meet the node console. */
 console.log("Hello World");
@@ -22,8 +24,6 @@ console.log("Hello World");
 //app.get("/", function(req, res) {
 //    res.send("Hello Express");
 //});
-
-
 
 /** 3) Serve an HTML file */
 app.get("/", function(req, res) {
